@@ -1,0 +1,231 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/Zetafonts - Lovelace Text Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/buttonui.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Sprites/factorysmokeless.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Start.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/MenuButtons.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Difficulty.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Global.gd" type="Script" id=8]
+[ext_resource path="res://Sprites/2002.i126.003_automated robotic packing conveyor.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Background2.gd" type="Script" id=10]
+[ext_resource path="res://Sounds/BeepBox-Song (23).wav" type="AudioStream" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 73
+font_data = ExtResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 20.01
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 242.38
+orbit_velocity = -0.1
+orbit_velocity_random = 0.0
+scale = 20.0
+scale_random = 0.07
+color = Color( 0.870588, 0.784314, 0.784314, 1 )
+hue_variation = -0.04
+hue_variation_random = 0.29
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_right = 576.0
+margin_bottom = 1024.0
+color = Color( 0.976471, 0.898039, 0.898039, 1 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+margin_top = 252.0
+margin_right = 576.0
+margin_bottom = 403.0
+custom_colors/font_color = Color( 0.560784, 0.286275, 0.286275, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Casts and
+Curious"
+align = 1
+valign = 1
+
+[node name="MenuButtons" type="Node2D" parent="UI"]
+script = ExtResource( 6 )
+
+[node name="Start" type="Node2D" parent="UI/MenuButtons"]
+position = Vector2( 60, 450 )
+script = ExtResource( 5 )
+
+[node name="Background" type="Node2D" parent="UI/MenuButtons/Start"]
+position = Vector2( -60, -450 )
+
+[node name="Smoke" type="Node2D" parent="UI/MenuButtons/Start/Background"]
+position = Vector2( 393, 664 )
+
+[node name="Particles2D" type="Particles2D" parent="UI/MenuButtons/Start/Background/Smoke"]
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 2 )
+
+[node name="Particles2D2" type="Particles2D" parent="UI/MenuButtons/Start/Background/Smoke"]
+position = Vector2( 130, 0 )
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="UI/MenuButtons/Start/Background"]
+position = Vector2( 377, 693 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+
+[node name="StartMenu" type="VBoxContainer" parent="UI/MenuButtons/Start"]
+margin_right = 164.0
+margin_bottom = 167.0
+
+[node name="Start" type="Button" parent="UI/MenuButtons/Start/StartMenu"]
+margin_right = 235.0
+margin_bottom = 53.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_colors/font_color_pressed = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Start"
+flat = true
+align = 0
+
+[node name="Level Select" type="Button" parent="UI/MenuButtons/Start/StartMenu"]
+margin_top = 57.0
+margin_right = 235.0
+margin_bottom = 110.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_colors/font_color_pressed = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Level Select"
+flat = true
+align = 0
+
+[node name="Quit" type="Button" parent="UI/MenuButtons/Start/StartMenu"]
+margin_top = 114.0
+margin_right = 235.0
+margin_bottom = 167.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.180392, 0.0156863, 0.0156863, 1 )
+custom_colors/font_color_hover = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_colors/font_color_pressed = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Quit"
+flat = true
+align = 0
+
+[node name="move_tween" type="Tween" parent="UI/MenuButtons/Start"]
+
+[node name="Difficulty" type="Node2D" parent="UI/MenuButtons"]
+position = Vector2( 636, 450 )
+script = ExtResource( 7 )
+
+[node name="Background2" type="Node2D" parent="UI/MenuButtons/Difficulty"]
+position = Vector2( 0, -450 )
+script = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="UI/MenuButtons/Difficulty/Background2"]
+position = Vector2( 332, 803 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 9 )
+offset = Vector2( -60, 0 )
+
+[node name="move_tween" type="Tween" parent="UI/MenuButtons/Difficulty/Background2"]
+
+[node name="Difficulty Menu" type="VBoxContainer" parent="UI/MenuButtons/Difficulty"]
+margin_right = 164.0
+margin_bottom = 167.0
+
+[node name="Easy" type="Button" parent="UI/MenuButtons/Difficulty/Difficulty Menu"]
+margin_right = 164.0
+margin_bottom = 53.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_colors/font_color_pressed = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Easy"
+flat = true
+align = 0
+
+[node name="Medium" type="Button" parent="UI/MenuButtons/Difficulty/Difficulty Menu"]
+margin_top = 57.0
+margin_right = 164.0
+margin_bottom = 110.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_colors/font_color_pressed = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Medium"
+flat = true
+align = 0
+
+[node name="Hard" type="Button" parent="UI/MenuButtons/Difficulty/Difficulty Menu"]
+margin_top = 114.0
+margin_right = 164.0
+margin_bottom = 167.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_colors/font_color_pressed = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Hard"
+flat = true
+align = 0
+
+[node name="Back" type="Button" parent="UI/MenuButtons/Difficulty/Difficulty Menu"]
+margin_top = 171.0
+margin_right = 164.0
+margin_bottom = 224.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.180392, 0.0156863, 0.0156863, 1 )
+custom_colors/font_color_hover = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_colors/font_color_pressed = Color( 0.517647, 0.423529, 0.423529, 1 )
+custom_fonts/font = ExtResource( 2 )
+enabled_focus_mode = 0
+text = "Back"
+flat = true
+align = 0
+
+[node name="move_tween" type="Tween" parent="UI/MenuButtons/Difficulty"]
+
+[node name="Logo" type="Node2D" parent="UI"]
+position = Vector2( 288, 139 )
+
+[node name="Sprite" type="Sprite" parent="UI/Logo"]
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Score" type="Node2D" parent="."]
+
+[node name="Button" type="Node2D" parent="."]
+
+[node name="Emitters" type="Node2D" parent="."]
+
+[node name="Global" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
+[connection signal="pressed" from="UI/MenuButtons/Start/StartMenu/Start" to="UI/MenuButtons" method="_on_Start_pressed"]
+[connection signal="pressed" from="UI/MenuButtons/Start/StartMenu/Level Select" to="UI/MenuButtons" method="_on_LevelSelect_pressed"]
+[connection signal="pressed" from="UI/MenuButtons/Start/StartMenu/Quit" to="UI/MenuButtons" method="_on_Quit_pressed"]
+[connection signal="pressed" from="UI/MenuButtons/Difficulty/Difficulty Menu/Back" to="UI/MenuButtons" method="_on_Back_pressed"]

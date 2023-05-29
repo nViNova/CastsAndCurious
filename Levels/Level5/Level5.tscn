@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/Gilroy-ExtraBold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Level5/Level5.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Level5" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.788235, 0.788235, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Change to Texture Rect for background textures"
+}
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -374.0
+custom_constants/separation = 0
+
+[node name="1" type="Button" parent="CanvasLayer/Control/Buttons"]
+margin_right = 576.0
+margin_bottom = 124.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Buttons/1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "TEST"
+align = 1
+valign = 1
+
+[node name="2" type="Button" parent="CanvasLayer/Control/Buttons"]
+margin_top = 124.0
+margin_right = 576.0
+margin_bottom = 249.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Buttons/2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "TEST"
+align = 1
+valign = 1
+
+[node name="3" type="Button" parent="CanvasLayer/Control/Buttons"]
+margin_top = 249.0
+margin_right = 576.0
+margin_bottom = 374.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Buttons/3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "TEST"
+align = 1
+valign = 1
+
+[node name="Image" type="VSplitContainer" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -320.0
+margin_right = 32.0
+margin_bottom = -223.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Image"]
+margin_left = 26.0
+margin_right = 90.0
+margin_bottom = 64.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Image"]
+margin_top = 76.0
+margin_right = 116.0
+margin_bottom = 129.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "LABEL"
