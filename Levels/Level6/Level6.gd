@@ -10,6 +10,14 @@ var item_scene = preload("res://Levels/Level6/Item.tscn")
 var parts = []
 var tools = []
 
+func _process(delta):
+	if $Parts.sprites.size() == 0 and $Tools.sprites.size() == 0:
+		var sm = get_node_or_null("/root/StateMachine")
+		if sm != null:
+			sm.level_done()
+		set_process(false)
+		return
+
 func attempt_merge():
 	var part = $Parts.current_target
 	var _tool = $Tools.current_target

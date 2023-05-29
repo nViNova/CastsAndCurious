@@ -46,17 +46,16 @@ func show_question():
 
 func _on_button_pressed(button):
 	if current_q >= len(processes):
+		get_node("/root/StateMachine").level_done()
 		return
 	var choice = button.get_node("Label").text
 	var answer = processes[current_q][0]
-	print("your choice " + choice + ", correct answer: " + answer)
 	if choice == answer:
-		print("correct!")
 		current_q += 1
 		show_question()
 	else:
-		print("wrong")
-
+		#print("wrong")
+		pass
 func random_n_elements(n, elements):
 	var output = []
 	var new_elements = elements.duplicate()

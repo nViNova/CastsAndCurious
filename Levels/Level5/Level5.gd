@@ -32,7 +32,7 @@ func show_question():
 	image.texture = load(image_path)
 	description.text = question
 	
-	var choices = one_nonrandom_element(current_question, buttons.get_children().size, cats)
+	var choices = one_nonrandom_element(current_question, buttons.get_children().size(), cats)
 	for btn_index in range(buttons.get_children().size()):
 		var button = buttons.get_children()[btn_index]
 		button.get_child(0).text = choices[btn_index][0]
@@ -64,13 +64,14 @@ func on_pressed(button):
 	pass
 
 func answer_correct():
-	print('YAY')
 	current_question += 1
 	if current_question >= len(cats):
-		print("DONE")
-		get_tree().quit()
+		var sm = get_node_or_null("/root/StateMachine")
+		if sm != null:
+			sm.level_done()
 		return
 	show_question()
 
 func answer_wrong():
-	print('OH NO')
+	#print('OH NO')
+	pass
