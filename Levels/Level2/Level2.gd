@@ -65,10 +65,8 @@ func _on_area_exited(area:Area2D):
 
 func set_correct_item(value):
 	correct_items = value
-	print(len(items))
 	if correct_items == len(items):
-		print("Win!")
-		var sm : StateMachine = get_node_or_null("/root/StateMachine")
+		var sm = get_node_or_null("/root/StateMachine")
 		if sm != null:
 			sm.level_done()
 		pass

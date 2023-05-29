@@ -29,8 +29,7 @@ func _ready():
 	
 func show_question():
 	if current_question >= len(parts):
-		print('THIS LEVEL IS FINISHED')
-		var sm : StateMachine = get_node_or_null("/root/StateMachine")
+		var sm = get_node_or_null("/root/StateMachine")
 		if sm != null:
 			sm.level_done()
 		return
@@ -77,9 +76,8 @@ func answer_picked(button):
 		emit_signal("wrong_answer")
 
 func answer_correct():
-	print('YAY')
 	current_question += 1
 	show_question()
 
 func answer_wrong():
-	print('OH LAWD THATS WRONG')
+	pass

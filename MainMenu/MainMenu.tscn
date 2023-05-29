@@ -1,0 +1,305 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Fonts/Zetafonts - Lovelace Text Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Gilroy-Light.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/factorysmokeless.png" type="Texture" id=3]
+[ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="DynamicFont" id=3]
+size = 72
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 0 )
+Button/fonts/font = SubResource( 5 )
+Button/styles/disabled = SubResource( 10 )
+Button/styles/focus = SubResource( 11 )
+Button/styles/hover = SubResource( 8 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 9 )
+Label/colors/font_color = Color( 0.560784, 0.286275, 0.286275, 1 )
+Label/fonts/font = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 20.01
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 242.38
+orbit_velocity = -0.1
+orbit_velocity_random = 0.0
+scale = 20.0
+scale_random = 0.07
+color = Color( 0.870588, 0.784314, 0.784314, 1 )
+hue_variation = -0.04
+hue_variation_random = 0.29
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UILayer/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Factory:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Factory:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "dissolve_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UILayer/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Factory:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "dissolve_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UILayer/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Factory:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "call_sm"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/Factory:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 415 ) ]
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UILayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Background" type="ColorRect" parent="UILayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.976471, 0.898039, 0.898039, 1 )
+
+[node name="Label" type="Label" parent="UILayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.109375
+anchor_right = 0.5
+anchor_bottom = 0.109375
+margin_left = -183.5
+margin_top = 156.0
+margin_right = 183.5
+margin_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Casts and
+Curious"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StartMenu" type="VBoxContainer" parent="UILayer/Control"]
+margin_left = 74.0
+margin_top = 461.0
+margin_right = 288.0
+margin_bottom = 580.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Start" type="Button" parent="UILayer/Control/StartMenu"]
+margin_right = 214.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Start"
+align = 0
+
+[node name="Quit" type="Button" parent="UILayer/Control/StartMenu"]
+margin_top = 61.0
+margin_right = 214.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Quit"
+align = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Factory" type="Node2D" parent="CanvasLayer"]
+
+[node name="Particles2D2" type="Particles2D" parent="CanvasLayer/Factory"]
+position = Vector2( 537, 661 )
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 7 )
+
+[node name="Particles2D3" type="Particles2D" parent="CanvasLayer/Factory"]
+position = Vector2( 399, 661 )
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Factory"]
+position = Vector2( 385, 690 )
+scale = Vector2( 0.216548, 0.216548 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 12 )
+anims/dissolve_in = SubResource( 13 )
+anims/dissolve_out = SubResource( 14 )
+
+[connection signal="pressed" from="UILayer/Control/StartMenu/Start" to="." method="start"]
+[connection signal="pressed" from="UILayer/Control/StartMenu/Quit" to="." method="quit"]
