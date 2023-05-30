@@ -41,5 +41,5 @@ func level_failed():
 	get_tree().change_scene_to(fail_scene)
 
 func change_scene():
-	$CanvasLayer/Control/Label.text = current_scene_name
+	$CanvasLayer/Control/VSplitContainer/Label.text = current_scene_name
 	get_tree().change_scene_to(loaded_scenes[current_scene_i])

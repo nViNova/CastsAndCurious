@@ -2,7 +2,7 @@
 
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Gilroy-ExtraBold.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Level4/Mechanicat.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=3]
 size = 53
@@ -72,7 +72,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -89,32 +89,32 @@ layer = 128
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -585.0
+margin_right = -585.0
 
 [node name="TextureRect" type="ColorRect" parent="CanvasLayer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.972549, 0.827451, 0.686275, 1 )
 
-[node name="Logo" type="TextureRect" parent="CanvasLayer/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -107.0
-margin_top = -86.0
-margin_right = 107.0
-margin_bottom = 86.0
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 200.0
+margin_bottom = -319.0
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer/Control/VSplitContainer"]
+margin_right = 576.0
+margin_bottom = 427.0
+size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 208.5
-margin_top = 598.0
-margin_right = -208.5
-margin_bottom = -412.0
+[node name="Label" type="Label" parent="CanvasLayer/Control/VSplitContainer"]
+margin_top = 439.0
+margin_right = 576.0
+margin_bottom = 505.0
 grow_horizontal = 2
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
