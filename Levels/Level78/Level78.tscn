@@ -9,3 +9,5 @@ script = ExtResource( 1 )
 [node name="SubLevel" type="Node" parent="."]
 
 [node name="Level7" parent="SubLevel" instance=ExtResource( 2 )]
+
+[connection signal="load_eight" from="SubLevel/Level7" to="." method="load_eight"]

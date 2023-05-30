@@ -1,14 +1,131 @@
-[gd_scene format=2]
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/Gilroy-Light.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Plain Textbox.png" type="Texture" id=3]
+[ext_resource path="res://Levels/Level78/Level7.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxTexture" id=5]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 517, 325 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 517, 325 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 0 )
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 4 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+PanelContainer/styles/panel = SubResource( 1 )
 
 [node name="Level7" type="Node2D"]
+script = ExtResource( 4 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -2
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -5
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.756863, 0.427451, 0.427451, 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 3 )
+
+[node name="TransSystem" type="Button" parent="CanvasLayer/Control"]
+margin_left = 32.0
+margin_top = 187.0
+margin_right = 358.0
+margin_bottom = 245.0
+text = "Transmission System"
+
+[node name="AirSystem" type="Button" parent="CanvasLayer/Control"]
+margin_left = 201.0
+margin_top = 757.0
+margin_right = 558.0
+margin_bottom = 815.0
+text = "AC System"
+
+[node name="ConfirmationDialog" type="PanelContainer" parent="CanvasLayer/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = -84.5
+margin_right = 144.0
+margin_bottom = 84.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ConfirmationDialog"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 278.0
+margin_bottom = 159.0
+custom_constants/separation = 13
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/ConfirmationDialog/VBoxContainer"]
+margin_right = 268.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "yes?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Control/ConfirmationDialog/VBoxContainer"]
+margin_top = 91.0
+margin_right = 268.0
+margin_bottom = 149.0
+alignment = 1
+
+[node name="No" type="Button" parent="CanvasLayer/Control/ConfirmationDialog/VBoxContainer/Buttons"]
+margin_left = 37.0
+margin_right = 95.0
+margin_bottom = 58.0
+size_flags_horizontal = 6
+text = "no"
+
+[node name="Yes" type="Button" parent="CanvasLayer/Control/ConfirmationDialog/VBoxContainer/Buttons"]
+margin_left = 167.0
+margin_right = 237.0
+margin_bottom = 58.0
+size_flags_horizontal = 6
+text = "yes"
+
+[node name="Car" type="Sprite" parent="."]
 position = Vector2( 288, 512 )
+texture = ExtResource( 1 )
+
+[connection signal="pressed" from="CanvasLayer/Control/ConfirmationDialog/VBoxContainer/Buttons/No" to="." method="_on_No_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ConfirmationDialog/VBoxContainer/Buttons/Yes" to="." method="_on_Yes_pressed"]

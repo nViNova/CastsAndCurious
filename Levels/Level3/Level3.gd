@@ -4,10 +4,9 @@ signal correct_answer
 signal wrong_answer
 
 export var parts = [
-	["NAME", "FUNCTION", ".png"],
-	["NAME2", "FUNCTION2", ".png"],
-	["NAME3", "FUNCTION3", ".png"],
-	["NAME4", "FUNCTION4", ".png"]
+	["Gear Shifter", "For shifting gears", "res://Assets/Level3/resized/resizedGears.png"],
+	["Fluid Tank", "For storing fluids", "res://Assets/Level3/resized/resizedFluid Tank.png"],
+	["Electric Fan", "For cooling", "res://Assets/Level3/resized/resizedElectric Fan.png"]
 ]
 
 var current_question = 0
@@ -34,6 +33,8 @@ func show_question():
 			sm.level_done()
 		return
 
+	$AnimationPlayer.play("show_question")
+
 	if parts[current_question][2] == ".png":
 		parts[current_question][2] = "res://icon.png"
 
@@ -47,9 +48,9 @@ func show_question():
 	var third_number = current_question
 
 	while first_number == second_number:
-		second_number = randi() % 4
+		second_number = randi() % len(parts)
 	while first_number == third_number or second_number == third_number:
-		third_number = randi() % 4
+		third_number = randi() % len(parts)
 
 	var question = randi() % 2
 	var answer = -1
@@ -59,9 +60,9 @@ func show_question():
 		answer = 0
 
 	correct_answer = parts[first_number][answer]
-	buttons[0].get_node("Label").text = parts[first_number][answer]
-	buttons[1].get_node("Label").text = parts[second_number][answer]
-	buttons[2].get_node("Label").text = parts[third_number][answer]
+	buttons[0].text = parts[first_number][answer] 
+	buttons[1].text = parts[second_number][answer]
+	buttons[2].text = parts[third_number][answer] 
 
 	get_node("%Label").text = parts[first_number][question]
 
@@ -69,7 +70,7 @@ func show_question():
 
 
 func answer_picked(button):
-	var answer = button.get_node("Label").text
+	var answer = button.text
 	if answer == correct_answer:
 		emit_signal("correct_answer")
 	else:
