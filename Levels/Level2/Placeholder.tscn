@@ -17,3 +17,4 @@ margin_right = 5.0
 margin_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color( 1, 1, 1, 0 )

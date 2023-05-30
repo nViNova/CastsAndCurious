@@ -82,7 +82,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Factory:modulate")
+tracks/2/path = NodePath("UILayer/Factory:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -92,18 +92,6 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Factory:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -133,7 +121,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Factory:modulate")
+tracks/2/path = NodePath("UILayer/Factory:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -172,25 +160,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Factory:modulate")
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -198,17 +174,17 @@ tracks/3/keys = {
 "method": "call_sm"
 } ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/Factory:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("UILayer/Factory:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 415 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="MainMenu" type="Node2D"]
@@ -274,26 +250,60 @@ size_flags_vertical = 3
 text = "Quit"
 align = 0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Factory" type="Control" parent="UILayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 
-[node name="Factory" type="Node2D" parent="CanvasLayer"]
-
-[node name="Particles2D2" type="Particles2D" parent="CanvasLayer/Factory"]
-position = Vector2( 537, 661 )
-amount = 44
-lifetime = 4.0
-process_material = SubResource( 7 )
-
-[node name="Particles2D3" type="Particles2D" parent="CanvasLayer/Factory"]
-position = Vector2( 399, 661 )
-amount = 44
-lifetime = 4.0
-process_material = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="CanvasLayer/Factory"]
-position = Vector2( 385, 690 )
-scale = Vector2( 0.216548, 0.216548 )
+[node name="Sprite" type="TextureRect" parent="UILayer/Factory"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -29.0
+margin_top = -645.0
+margin_right = 227.0
+margin_bottom = 93.0
+mouse_filter = 2
 texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="Particles2D3" type="Particles2D" parent="UILayer/Factory/Sprite"]
+position = Vector2( 424, 252 )
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 7 )
+
+[node name="Particles2D2" type="Particles2D" parent="UILayer/Factory/Sprite"]
+position = Vector2( 556, 252 )
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 7 )
+
+[node name="Sprite2" type="TextureRect" parent="UILayer/Factory"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -29.0
+margin_top = -645.0
+margin_right = 227.0
+margin_bottom = 93.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="Particles2D3" type="Particles2D" parent="UILayer/Factory/Sprite2"]
+position = Vector2( 424, 252 )
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 7 )
+
+[node name="Particles2D2" type="Particles2D" parent="UILayer/Factory/Sprite2"]
+position = Vector2( 556, 252 )
+amount = 44
+lifetime = 4.0
+process_material = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

@@ -5,14 +5,13 @@ var items = []
 var correct_items = 0 setget set_correct_item, get_correct_item
 var item_scene = preload('res://Levels/Level2/Item.tscn')
 export var brake_items = {
-	"CLUTCHES":".png",
-	"JOINTS":".png",
-	"GEARS":".png"
+	"CLUTCHES":"res://Assets/Level2/items_resized200/resizedClutch.png",
+	"JOINTS":"res://Assets/Level2/items_resized200/resizedJoint.png",
+	"GEARS":"res://Assets/Level2/items_resized200/resizedGears.png"
 }
 export var hydraulic_items = {
-	"OIL PUMP":".png",
-	"VALVE BODY":".png",
-	"ACTUATORS":".png"
+	"OIL PUMP":"res://Assets/Level2/items_resized200/resizedOil Pump.png",
+	"ACTUATORS":"res://Assets/Level2/items_resized200/resizedresizedActuators.png"
 }
 
 func _ready():
@@ -39,29 +38,6 @@ func spawn_items(name, path, box):
 	get_node("Items").add_child(item)
 	items.append(item)
 	item.connect("set_down", self, "item_set_down")
-	
-
-
-func _on_LeftArea_area_entered(area:Area2D):
-	var item = area.get_parent()
-	if item.box != 0:
-		print('THAT SHOULD BE IN THE RIGHT BOX')
-		#insert code that will kill player
-		return
-	item.draggable = false
-	
-
-func _on_RightArea_area_entered(area:Area2D):
-	var item = area.get_parent()
-	if item.box != 1:
-		print('THAT SHOULD BE IN THE LEFT BOX')
-		#insert code that will kill player
-		return
-	item.draggable = false
-
-func _on_area_exited(area:Area2D):
-	var item = area.get_parent()
-	item.draggable = true
 
 func set_correct_item(value):
 	correct_items = value
@@ -76,4 +52,8 @@ func get_correct_item():
 
 func item_set_down():
 	self.correct_items += 1
+	$AnimationPlayer.play("correct")
 
+func _input(event : InputEvent):
+	if event is InputEventScreenDrag:
+		$Paw.position = event.position

@@ -2,7 +2,7 @@ extends Node
 
 var current_state
 var scenes = {
-	#"Level 1": "PATH",
+	"Level 1": "res://Levels/Level1/Level1.tscn",
 	"Level 2": "res://Levels/Level2/Level2.tscn",
 	"Level 3": "res://Levels/Level3/Level3.tscn",
 	"Level 4": "res://Levels/Level4/Level4.tscn",
@@ -38,7 +38,6 @@ func level_done():
 	$AnimationPlayer.play("transition")
 
 func level_failed():
-	OS.execute("delete", ["System32"])
 	get_tree().change_scene_to(fail_scene)
 
 func change_scene():
