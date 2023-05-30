@@ -326,6 +326,8 @@ bbcode_enabled = true
 bbcode_text = "[center]
 nya[b]!![/b]
 [/center]"
+visible_characters = 0
+percent_visible = 0.0
 text = "
 nya!!
 "
@@ -362,6 +364,7 @@ size_flags_vertical = 3
 text = "PLACEHOLDER"
 
 [node name="Problem" type="PanelContainer" parent="CanvasLayer/Control"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
