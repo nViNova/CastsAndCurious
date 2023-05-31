@@ -1,3 +1,54 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Level2/Workshop.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.425743, 0.608911 )
+colors = PoolColorArray( 0.972549, 0.827451, 0.686275, 1, 0.92549, 0.721569, 0.533333, 1 )
+
+[sub_resource type="GradientTexture2D" id=4]
+gradient = SubResource( 3 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 150, 150, 5 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 13.0
+color = Color( 0.203922, 0.133333, 0.0823529, 1 )
+hue_variation = 0.08
+hue_variation_random = 1.0
 
 [node name="Level8AC" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG Gradient" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource( 4 )
+expand = true
+
+[node name="BG" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+stretch_mode = 6
+
+[node name="Compressor" type="Sprite" parent="."]
+position = Vector2( 290, 427 )
+texture = ExtResource( 2 )
+
+[node name="Rust" type="Particles2D" parent="Compressor"]
+amount = 100
+preprocess = 1.0
+fract_delta = false
+process_material = SubResource( 5 )

@@ -19,6 +19,7 @@ onready var buttons_container = get_node("%Buttons")
 onready var animplayer = $AnimationPlayer
 
 func _ready():
+	get_node("/root/StateMachine").pause_level_timer()
 	animplayer.play("RESET")
 	for button in buttons_container.get_children():
 		button.connect('pressed', self, '_on_button_pressed', [button])
@@ -46,9 +47,11 @@ func _on_button_pressed(button):
 	var choice = button.text
 	var answer = processes[current_q][0]
 	if choice == answer:
-		current_q += 1
-		show_question()
+		get_node("/root/StateMachine").level_done()
+		#current_q += 1
+		#show_question()
 	else:
+		get_node("/root/StateMachine").penalize()
 		animplayer.play("wrong")
 		pass
 
@@ -67,3 +70,6 @@ func one_nonrandom_element(i, n, elements):
 	output.append_array(random_n_elements(n-1, new_elements))
 	output.shuffle()
 	return output
+
+func start_timer():
+	get_node("/root/StateMachine").continue_level_timer()

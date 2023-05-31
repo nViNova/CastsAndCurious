@@ -1,28 +1,32 @@
 extends Node
 
 var current_state
-var scenes = {
-	"Level 1": "res://Levels/Level1/Level1.tscn",
-	"Level 2": "res://Levels/Level2/Level2.tscn",
-	"Level 3": "res://Levels/Level3/Level3.tscn",
-	"Level 4": "res://Levels/Level4/Level4.tscn",
-	"Level 5": "res://Levels/Level5/Level5.tscn",
-	"Level 6": "res://Levels/Level6/Level6.tscn"
-	#insert other levels here...
-}
-#main menu scene or something
-onready var fail_scene = load("res://MainMenu/MainMenu.tscn")
-onready var win_scene = load("res://MainMenu/MainMenu.tscn")
+var scenes = [
+	["Fixing the Purr-oblem!", "res://Levels/Level1/Level1.tscn", 6],
+	["Boxing It Out!", "res://Levels/Level2/Level2.tscn", 12],
+	["Paws, Pads, Parts", "res://Levels/Level3/Level3.tscn", 6],
+	["Automotive Manu-Cattery", "res://Levels/Level4/Level4.tscn", 6],
+	["Fix-It Felines!", "res://Levels/Level5/Level5.tscn", 6],
+	["Tabby Tools", "res://Levels/Level6/Level6.tscn", 24]
+]
+onready var fail_scene = load("res://MainMenu/GameOver.tscn")
+onready var main_scene = load("res://MainMenu/MainMenu.tscn")
 var loaded_scenes = []
 var current_scene_i = 0
 var current_scene : PackedScene
 var current_scene_name : String
+var score = 0
+#multiply this to time
+var difficulty_scale = 1
 
 func _ready():
-	for name in scenes:
-		loaded_scenes.append(load(scenes[name]))
+	randomize()
+	#uncomment this to shuffle the levels
+	scenes.shuffle()
+	for scene in scenes:
+		loaded_scenes.append(load(scene[1]))
 	current_scene = loaded_scenes[0]
-	current_scene_name = scenes.keys()[0]
+	current_scene_name = scenes[current_scene_i][0]
 	$AnimationPlayer.play("hide")
 
 func start():
@@ -32,16 +36,37 @@ func start():
 #Make the level call this when it's done
 
 func level_done():
+	#score += (level max time + time left) * 10
+	score += int((scenes[current_scene_i][2] + $LevelTimer.get_time_left()) * 10)
+	$LevelTimer.reset()
+
 	current_scene_i += 1
 	if current_scene_i >= len(loaded_scenes):
-		get_tree().change_scene_to(win_scene)
-		return
-	current_scene_name = scenes.keys()[current_scene_i]
-	$CanvasLayer/Control/VSplitContainer/Label.text = current_scene_name
+		difficulty_scale = difficulty_scale * 0.7
+		current_scene_i = 0
+	current_scene_name = scenes[current_scene_i][0]
+	$CanvasLayer/Control/VSplitContainer/Label.text = "Current Score: " + str(score) + "\n" + current_scene_name
 	$AnimationPlayer.play("transition")
-
 func level_failed():
 	get_tree().change_scene_to(fail_scene)
 
 func change_scene():
 	get_tree().change_scene_to(loaded_scenes[current_scene_i])
+
+#call this whenever the level should be started
+func start_level_timer():
+	$LevelTimer.start_timer(scenes[current_scene_i][2] * difficulty_scale)
+
+func pause_level_timer():
+	$LevelTimer.pause_timer()
+
+func continue_level_timer():
+	$LevelTimer.continue_timer()
+
+func _on_LevelTimer_timeout():
+	#get_tree().quit() #LMAO
+	$LevelTimer.reset()
+	get_tree().change_scene_to(fail_scene)
+
+func penalize():
+	$LevelTimer.penalize()
