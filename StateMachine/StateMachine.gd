@@ -18,6 +18,7 @@ var current_scene_name : String
 var score = 0
 #multiply this to time
 var difficulty_scale = 1
+var lives = 3
 
 func _ready():
 	randomize()
@@ -45,10 +46,15 @@ func level_done():
 		difficulty_scale = difficulty_scale * 0.7
 		current_scene_i = 0
 	current_scene_name = scenes[current_scene_i][0]
-	$CanvasLayer/Control/VSplitContainer/Label.text = "Current Score: " + str(score) + "\n" + current_scene_name
+	$CanvasLayer/Control/VSplitContainer/Label.text = "Current Score: " + str(score) + "\n" + current_scene_name + "\nLives: " + str(lives)
 	$AnimationPlayer.play("transition")
+
 func level_failed():
-	get_tree().change_scene_to(fail_scene)
+	lives += -1
+	if lives <= 0:
+		get_tree().change_scene_to(fail_scene)
+	else:
+		level_done()
 
 func change_scene():
 	get_tree().change_scene_to(loaded_scenes[current_scene_i])
@@ -66,7 +72,7 @@ func continue_level_timer():
 func _on_LevelTimer_timeout():
 	#get_tree().quit() #LMAO
 	$LevelTimer.reset()
-	get_tree().change_scene_to(fail_scene)
+	level_failed()
 
 func penalize():
 	$LevelTimer.penalize()
