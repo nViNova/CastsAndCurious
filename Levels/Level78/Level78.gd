@@ -3,8 +3,8 @@
 extends Node2D
 
 var scenarios = [
-    ["Transmission System","res://icon.png", "res://Levels/Level78/Level8Gears.tscn"], #Gears
-    ["AC System","res://icon.png", "res://Levels/Level78/Level8AC.tscn"]  #Coolant
+    ["Transmission System","res://icon.png", "res://Levels/Level78/Level8Gear/Level8Gears.tscn"], #Gears
+    ["AC System","res://icon.png", "res://Levels/Level78/Level8AC/Level8AC.tscn"]  #Coolant
 ]
 var scenario
 func _ready():

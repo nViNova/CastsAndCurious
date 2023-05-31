@@ -27,19 +27,21 @@ func _ready():
 
 func start():
 	#get_tree().change_scene_to(current_scene)
+	$CanvasLayer/Control/VSplitContainer/Label.text = current_scene_name
 	$AnimationPlayer.play("transition")
 #Make the level call this when it's done
+
 func level_done():
 	current_scene_i += 1
 	if current_scene_i >= len(loaded_scenes):
 		get_tree().change_scene_to(win_scene)
 		return
 	current_scene_name = scenes.keys()[current_scene_i]
+	$CanvasLayer/Control/VSplitContainer/Label.text = current_scene_name
 	$AnimationPlayer.play("transition")
 
 func level_failed():
 	get_tree().change_scene_to(fail_scene)
 
 func change_scene():
-	$CanvasLayer/Control/Label.text = current_scene_name
 	get_tree().change_scene_to(loaded_scenes[current_scene_i])
