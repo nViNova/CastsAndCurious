@@ -5,14 +5,12 @@ signal wrong_answer
 
 export var cats = [
 	#[NAME, QUESTOIN, IMAGE PATH]
-	["CAT1", "THIS IS CAT1", ".png"],
-	["CAT2", "THIS IS CAT2", ".png"],
-	["CAT3", "THIS IS CAT3", ".png"],
+	["Welding Cutters", "These felines are responsible for the junction and assembly of car parts in its assembly.", "res://Assets/Level5/resized/resizedGiorno.png"],
+	["Molding Operators", "These fellas operate on the coremaking of machines as well as metalcasting or molding of car parts.", "res://Assets/Level5/resized/resizedChild Labor.png"],
+	["Construction Laborers", "These fixers are given labor work in the construction of automotive parts.", "res://Assets/Level5/resized/resizedGigacat.png"],
 ]
 
 var current_question = 0
-
-onready var image = get_node("%Image/TextureRect")
 onready var description = get_node("%Image/Label")
 onready var buttons = get_node("CanvasLayer/Control/Buttons")
 
@@ -24,18 +22,17 @@ func _ready():
 	randomize()
 	cats.shuffle()
 	show_question()
+	$AnimationPlayer.play("show_question")
 
 func show_question():
 	var question = cats[current_question][1]
-	var image_path = cats[current_question][2]
-	if image_path == ".png": image_path = "icon.png"
-	image.texture = load(image_path)
-	description.text = question
+	description.bbcode_text = "[center]" + question
+	print(question)
 	
 	var choices = one_nonrandom_element(current_question, buttons.get_children().size(), cats)
 	for btn_index in range(buttons.get_children().size()):
 		var button = buttons.get_children()[btn_index]
-		button.get_child(0).text = choices[btn_index][0]
+		button.get_child(0).texture = load(choices[btn_index][2])
 
 func random_n_elements(n, elements):
 	var output = []
@@ -56,8 +53,8 @@ func one_nonrandom_element(i, n, elements):
 func on_pressed(button):
 	if current_question >= len(cats):
 		return
-	var answer = button.get_child(0).text
-	if answer == cats[current_question][0]:
+	var answer = button.get_child(0).texture
+	if answer == load(cats[current_question][2]):
 		emit_signal("correct_answer")
 	else:
 		emit_signal("wrong_answer")
@@ -70,8 +67,9 @@ func answer_correct():
 		if sm != null:
 			sm.level_done()
 		return
-	show_question()
-
+	#show_question()
+	$AnimationPlayer.play("correct")
 func answer_wrong():
+	$AnimationPlayer.play("wrong")
 	#print('OH NO')
 	pass

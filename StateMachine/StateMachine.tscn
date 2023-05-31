@@ -34,6 +34,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 576, 1024 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Control/VSplitContainer/Logo:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "hide"
@@ -79,6 +91,18 @@ tracks/1/keys = {
 "method": "change_scene"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Control/VSplitContainer/Logo:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
 
 [node name="StateMachine" type="Node"]
 script = ExtResource( 1 )
@@ -106,6 +130,7 @@ margin_bottom = -319.0
 [node name="Logo" type="TextureRect" parent="CanvasLayer/Control/VSplitContainer"]
 margin_right = 576.0
 margin_bottom = 427.0
+rect_pivot_offset = Vector2( 288, 213 )
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true

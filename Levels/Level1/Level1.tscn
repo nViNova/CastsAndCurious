@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Level1/Call (w_o textbox).png" type="Texture" id=1]
 [ext_resource path="res://Assets/Plain Textbox.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Levels/Level1/Level1.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=9]
-size = 40
+size = 28
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -24,6 +24,18 @@ margin_bottom = 20.0
 size = 40
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 40
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -52,6 +64,8 @@ Button/styles/pressed = SubResource( 10 )
 PanelContainer/styles/panel = SubResource( 3 )
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
 RichTextLabel/fonts/bold_font = SubResource( 4 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 13 )
+RichTextLabel/fonts/italics_font = SubResource( 12 )
 RichTextLabel/fonts/normal_font = SubResource( 5 )
 
 [sub_resource type="Animation" id=6]
@@ -140,6 +154,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/Control/Problem/RichTextLabel:percent_visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "show_problem"
@@ -152,10 +178,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
-"transitions": PoolRealArray( -2, -2, -2 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Vector2( 151, 306 ), Vector2( 151, 268 ), Vector2( 151, 306 ) ]
+"values": [ Vector2( 49, 138 ), Vector2( 49, 224 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/Control/Problem:visible")
@@ -192,6 +218,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/Control/Problem/RichTextLabel:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -285,7 +323,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( -2, -2, -2, -2 ),
 "update": 0,
-"values": [ Vector2( 151, 306 ), Vector2( 101, 306 ), Vector2( 201, 306 ), Vector2( 151, 306 ) ]
+"values": [ Vector2( 49, 224 ), Vector2( -50, 224 ), Vector2( 99, 224 ), Vector2( 49, 224 ) ]
 }
 
 [node name="Level1" type="Node2D"]
@@ -316,6 +354,7 @@ margin_bottom = -25.0
 mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Chat"]
+visible = false
 margin_left = 20.0
 margin_top = 90.0
 margin_right = 497.0
@@ -326,8 +365,6 @@ bbcode_enabled = true
 bbcode_text = "[center]
 nya[b]!![/b]
 [/center]"
-visible_characters = 0
-percent_visible = 0.0
 text = "
 nya!!
 "
@@ -335,7 +372,6 @@ fit_content_height = true
 scroll_active = false
 
 [node name="Choices" type="VBoxContainer" parent="CanvasLayer/Control/Chat"]
-visible = false
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 497.0
@@ -347,7 +383,7 @@ size_flags_vertical = 3
 margin_right = 477.0
 margin_bottom = 92.0
 size_flags_vertical = 3
-text = "PLACEHOLDER"
+text = "placeholder"
 
 [node name="Button2" type="Button" parent="CanvasLayer/Control/Chat/Choices"]
 margin_top = 96.0
@@ -364,27 +400,28 @@ size_flags_vertical = 3
 text = "PLACEHOLDER"
 
 [node name="Problem" type="PanelContainer" parent="CanvasLayer/Control"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -137.0
-margin_top = -206.0
-margin_right = 137.0
-margin_bottom = -118.0
+margin_left = -239.0
+margin_top = -374.0
+margin_right = 238.0
+margin_bottom = -286.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Problem"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 254.0
+margin_right = 457.0
 margin_bottom = 68.0
 mouse_filter = 2
 size_flags_vertical = 4
 bbcode_enabled = true
 bbcode_text = "[center]Description![/center]"
+visible_characters = 0
+percent_visible = 0.0
 text = "Description!"
 fit_content_height = true
 scroll_active = false
