@@ -185,7 +185,7 @@ tracks/4/path = NodePath("AnimationPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
@@ -199,7 +199,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
@@ -212,7 +212,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=9]
 resource_name = "show_question"
 length = 0.3
-step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Control/Buttons:margin_left")
 tracks/0/interp = 1
@@ -297,34 +296,24 @@ tracks/6/keys = {
 "update": 1,
 "values": [ -21.9041 ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "continue_timer"
+} ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "wrong"
 length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/Image:margin_right")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( -2, -2, -2, 1 ),
-"update": 0,
-"values": [ 270.0, 300, 240, 270.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Control/Image:margin_left")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( -2, -2, -2, 1 ),
-"update": 0,
-"values": [ 20.0, 50, -10, 20.0 ]
-}
 
 [node name="Level5" type="Node2D"]
 script = ExtResource( 3 )
@@ -427,9 +416,9 @@ grow_horizontal = 2
 
 [node name="Label" type="RichTextLabel" parent="CanvasLayer/Control/Image"]
 margin_left = 20.0
-margin_top = 404.0
+margin_top = 405.0
 margin_right = 230.0
-margin_bottom = 572.0
+margin_bottom = 573.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 bbcode_enabled = true

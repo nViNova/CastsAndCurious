@@ -1,9 +1,9 @@
 extends Node2D
 
 var pairs = [
-	["Screws", ".png", "Nail Gun and Air Wrench", ".png"],
-	["Hexagon Torque Nut", ".png", "Torque Wrench", ".png"],
-	["Lug Nuts", ".png", "Impact Wrench", ".png"],
+	["Screws", "res://Assets/Level6/resizedScrews.png", "Air Wrench", "res://Assets/Level6/resizedAir Wrench.png"],
+	["Hexagon Torque Nut", "res://Assets/Level6/resizedHexagon Torque Nut.png", "Torque Wrench", "res://Assets/Level6/resizedTorque Wrench.png"],
+	["Lug Nuts", "res://Assets/Level6/resizedLug Nuts.png", "Impact Wrench", "res://Assets/Level6/resizedImpact Wrench.png"],
 ]
 var item_scene = preload("res://Levels/Level6/Item.tscn")
 
@@ -36,8 +36,11 @@ func attempt_merge():
 				$Parts.current_target = null
 				$Tools.current_target = null
 				$AnimationPlayer.play("success")
+				get_node("/root/StateMachine").pause_level_timer()
 				return
 	$AnimationPlayer.play("fail")
+	get_node("/root/StateMachine").penalize()
+	get_node("/root/StateMachine").pause_level_timer()
 
 func _ready():
 	pairs.shuffle()
@@ -58,3 +61,6 @@ func _ready():
 		$Tools.add_child(_tool)
 	$Parts.start()
 	$Tools.start()
+
+func continue_timer():
+	get_node("/root/StateMachine").continue_level_timer()

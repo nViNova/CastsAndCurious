@@ -6,7 +6,12 @@ signal wrong_answer
 export var parts = [
 	["Gear Shifter", "For shifting gears", "res://Assets/Level3/resized/resizedGears.png"],
 	["Fluid Tank", "For storing fluids", "res://Assets/Level3/resized/resizedFluid Tank.png"],
-	["Electric Fan", "For cooling", "res://Assets/Level3/resized/resizedElectric Fan.png"]
+	["Alternator", "For cooling", "res://Assets/Level3/resized/resizedElectric Fan.png"],
+	["Radiator", "For heat exchange in an engine.", "res://Assets/Level3/resized/resizedRadiator.png"],
+	["Exhaust Manifold", "Collect exhaust from engine cylinders.", "res://Assets/Level3/resized/exhaust_manifold.png"],
+	["Power Steering Fluid", "Stores fuel for steering system", "res://Assets/Level3/resized/power_steering_fluid.png"],
+	["Steering Wheel","Dictates vehicle direction","res://Assets/Level3/resized/steering_wheel.png"],
+	["Torque Converter","A doughnut-shaped fluid coupling","res://Assets/Level3/resized/torque_converter.png"],
 ]
 
 var current_question = 0
@@ -77,8 +82,10 @@ func answer_picked(button):
 		emit_signal("wrong_answer")
 
 func answer_correct():
-	current_question += 1
-	show_question()
+	get_node("/root/StateMachine").level_done()
+	#current_question += 1
+	#show_question()
 
 func answer_wrong():
+	get_node("/root/StateMachine").penalize()
 	pass

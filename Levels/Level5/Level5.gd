@@ -15,6 +15,7 @@ onready var description = get_node("%Image/Label")
 onready var buttons = get_node("CanvasLayer/Control/Buttons")
 
 func _ready():
+	get_node("/root/StateMachine").pause_level_timer()
 	connect("correct_answer", self, "answer_correct")
 	connect("wrong_answer", self, "answer_wrong")
 	for button in buttons.get_children():
@@ -27,7 +28,6 @@ func _ready():
 func show_question():
 	var question = cats[current_question][1]
 	description.bbcode_text = "[center]" + question
-	print(question)
 	
 	var choices = one_nonrandom_element(current_question, buttons.get_children().size(), cats)
 	for btn_index in range(buttons.get_children().size()):
@@ -62,14 +62,17 @@ func on_pressed(button):
 
 func answer_correct():
 	current_question += 1
-	if current_question >= len(cats):
-		var sm = get_node_or_null("/root/StateMachine")
-		if sm != null:
-			sm.level_done()
-		return
-	#show_question()
 	$AnimationPlayer.play("correct")
+	get_node("/root/StateMachine").level_done()
+	#if current_question >= len(cats):
+	#	var sm = get_node_or_null("/root/StateMachine")
+	#	if sm != null:
+	#		sm.level_done()
+	#	return
+	#show_question()
 func answer_wrong():
 	$AnimationPlayer.play("wrong")
-	#print('OH NO')
-	pass
+	get_node("/root/StateMachine").penalize()
+
+func continue_timer():
+	get_node("/root/StateMachine").continue_level_timer()
