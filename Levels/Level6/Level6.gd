@@ -35,6 +35,7 @@ func attempt_merge():
 				_tool.queue_free()
 				$Parts.current_target = null
 				$Tools.current_target = null
+				
 				$AnimationPlayer.play("success")
 				get_node("/root/StateMachine").pause_level_timer()
 				return

@@ -29,10 +29,13 @@ func start():
 	#get_tree().change_scene_to(current_scene)
 	$CanvasLayer/Control/VSplitContainer/Instructions.text = scenes[current_scene_i][0] + "\n" + scenes[current_scene_i][3]
 	$AnimationPlayer.play("transition")
+	$Bgroundmusic.play()
+	
 #Make the level call this when it's done
 
 func level_done():
 	#score += (level max time + time left) * 10
+	$CatHappi.play()
 	score += int((scenes[current_scene_i][2] + $LevelTimer.get_time_left()) * 10)
 	$LevelTimer.reset()
 
@@ -51,6 +54,7 @@ func level_failed():
 	if lives <= 0:
 		get_tree().change_scene_to(fail_scene)
 		scenes.shuffle()
+		$Bgroundmusic.stop()
 	else:
 		$LevelTimer.reset()
 		current_scene_i += 1
@@ -67,7 +71,7 @@ func change_scene():
 
 #call this whenever the level should be started
 func start_level_timer():
-	$LevelTimer.start_timer(scenes[current_scene_i][2] * difficulty_scale)
+	$LevelTimer.start_timer(scenes[current_scene_i][2] * difficulty_scale)	
 
 func pause_level_timer():
 	$LevelTimer.pause_timer()
@@ -79,8 +83,10 @@ func _on_LevelTimer_timeout():
 	#get_tree().quit() #LMAO
 	$LevelTimer.reset()
 	level_failed()
+	$CatAngy.play()
 
 func penalize():
+	$CatPenalize.play()
 	$LevelTimer.penalize()
 
 func print_scenes():
