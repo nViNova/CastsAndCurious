@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Gilroy-ExtraBold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Level4/Mechanicat.png" type="Texture" id=3]
 [ext_resource path="res://Levels/LevelTimer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/Gilroy-Light.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Sounds/mixkit-angry-cartoon-kitty-meow-94.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/mixkit-cat-walk-371.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/mixkit-sweet-kitty-meow-93.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/CatAngerPenalize.mp3" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -63,7 +67,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "transition"
-length = 2.0
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Control:rect_position")
 tracks/0/interp = 1
@@ -71,7 +75,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1.6, 2 ),
+"times": PoolRealArray( 0, 0.3, 0.9, 1.3 ),
 "transitions": PoolRealArray( -2, -2, -2, -2 ),
 "update": 0,
 "values": [ Vector2( -585, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -585, 0 ) ]
@@ -83,7 +87,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.6, 2 ),
+"times": PoolRealArray( 0.9, 1.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -100,7 +104,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = false
 tracks/2/keys = {
-"times": PoolRealArray( 0.3, 1.6 ),
+"times": PoolRealArray( 0.3, 0.9 ),
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
 "values": [ 360.0, 0.0 ]
@@ -188,5 +192,17 @@ align = 1
 autowrap = true
 
 [node name="LevelTimer" parent="." instance=ExtResource( 4 )]
+
+[node name="CatAngy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Bgroundmusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="CatHappi" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="CatPenalize" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]

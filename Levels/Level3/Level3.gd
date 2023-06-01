@@ -4,9 +4,9 @@ signal correct_answer
 signal wrong_answer
 
 export var parts = [
-	["Gear Shifter", "For shifting gears", "res://Assets/Level3/resized/resizedGears.png"],
-	["Fluid Tank", "For storing fluids", "res://Assets/Level3/resized/resizedFluid Tank.png"],
-	["Alternator", "For cooling", "res://Assets/Level3/resized/resizedElectric Fan.png"],
+	["Gear Shifter", "Changes gear ratio", "res://Assets/Level3/resized/resizedGears.png"],
+	["Cooling Expansion Tank", "Stores excess liquid engine coolant", "res://Assets/Level3/resized/resizedFluid Tank.png"],
+	["Alternator", "Distributes steady streams of power", "res://Assets/Level3/resized/resizedElectric Fan.png"],
 	["Radiator", "For heat exchange in an engine.", "res://Assets/Level3/resized/resizedRadiator.png"],
 	["Exhaust Manifold", "Collect exhaust from engine cylinders.", "res://Assets/Level3/resized/exhaust_manifold.png"],
 	["Power Steering Fluid", "Stores fuel for steering system", "res://Assets/Level3/resized/power_steering_fluid.png"],
