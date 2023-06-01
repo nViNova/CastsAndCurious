@@ -3,13 +3,13 @@ extends Node2D
 
 export var processes = [
 	#"NAME, DESCRIPTION, IMAGE PATH"
-	["Engine Fitment and Assembly", "Mr. Whiskers! My rover still lacks its engine! How will I be able to reach my desired destination?” What stage of automotive manufacturing would help this client?"],
-	["Stamping or Pressing", "My car’s doors won’t fit because they’re flat as a flatbread. How would I drive with no doors?” What stage of automotive manufacturing would help this client?"],
-	["Final Inspection and Testing", "The car that I bought for my road trip had just finished its assembly, what do we do next.” What stage of automotive processing would help this client?"],
-	["Welding or Body Shop", "Mr. Whiskers! How would you attach compartments and hoods on a car?” What stage of automotive processing would help this client?"],
-	["Paint Assembly", "Mr. Whiskers! I want to make my truck Nyan Cat™ inspired, can you please change its color?” What stage of automotive processing would help this client?"],
-	["Design & Engineering", "Mr. Whiskers! I want my car to have suspensions to experience cloud 9.” What stage of automotive processing would help this client?"],
-	["Material Reworking", "Mr. Whiskers! How will I know what materials will be used for my car?” What stage of automotive processing would help this client?"]
+	["Engine Fitment and Assembly", "Mr. Whiskers! My rover still lacks its engine! How will I be able to reach my desired destination?"],
+	["Stamping or Pressing", "My car’s doors won’t fit because they’re flat as a flatbread. How would I drive with no doors?"],
+	["Final Inspection and Testing", "The car that I bought for my road trip had just finished its assembly, what do we do next."],
+	["Welding or Body Shop", "Mr. Whiskers! How would you attach compartments and hoods on a car?"],
+	["Paint Assembly", "Mr. Whiskers! I want to make my truck Nyan Cat™ inspired, can you please change its color?"],
+	["Design & Engineering", "Mr. Whiskers! I want my car to have suspensions to experience cloud 9."],
+	["Material Reworking", "Mr. Whiskers! How will I know what materials will be used for my car?"]
 ]
 
 var current_q = 0

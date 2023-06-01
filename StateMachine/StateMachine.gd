@@ -54,6 +54,7 @@ func level_failed():
 	if lives <= 0:
 		get_tree().change_scene_to(fail_scene)
 		scenes.shuffle()
+		difficulty_scale = 1
 		$Bgroundmusic.stop()
 	else:
 		$LevelTimer.reset()
