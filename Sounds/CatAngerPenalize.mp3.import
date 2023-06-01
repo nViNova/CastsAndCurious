@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CatAngerPenalize.mp3-a7ca81e04f78705ca7f83c75723e449d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/CatAngerPenalize.mp3"
+dest_files=[ "res://.import/CatAngerPenalize.mp3-a7ca81e04f78705ca7f83c75723e449d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

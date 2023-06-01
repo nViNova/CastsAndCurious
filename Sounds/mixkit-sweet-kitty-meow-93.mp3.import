@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mixkit-sweet-kitty-meow-93.mp3-3bb69ab1d67f9c7188f32b86e2983bfd.mp3str"
+
+[deps]
+
+source_file="res://Sounds/mixkit-sweet-kitty-meow-93.mp3"
+dest_files=[ "res://.import/mixkit-sweet-kitty-meow-93.mp3-3bb69ab1d67f9c7188f32b86e2983bfd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
