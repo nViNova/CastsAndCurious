@@ -22,6 +22,8 @@ func _process(delta):
 	progress_bar.value = 100 - 100 * timer.time_left / max_time
 
 func penalize():
+	if max_time == null:
+		return
 	var penalty = .25 * max_time
 	if (timer.time_left < penalty):
 		timeout()
