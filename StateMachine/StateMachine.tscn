@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Gilroy-ExtraBold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Level4/Mechanicat.png" type="Texture" id=3]
 [ext_resource path="res://Levels/LevelTimer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/Gilroy-Light.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -62,7 +63,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "transition"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Control:rect_position")
 tracks/0/interp = 1
@@ -70,7 +71,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1.6, 2 ),
+"times": PoolRealArray( 0, 0.3, 3.6, 4 ),
 "transitions": PoolRealArray( -2, -2, -2, -2 ),
 "update": 0,
 "values": [ Vector2( -585, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -585, 0 ) ]
@@ -82,7 +83,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.6, 2 ),
+"times": PoolRealArray( 3.6, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -99,15 +100,23 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = false
 tracks/2/keys = {
-"times": PoolRealArray( 0.3, 1.6 ),
+"times": PoolRealArray( 0.3, 3.6 ),
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
 "values": [ 360.0, 0.0 ]
 }
 
-[sub_resource type="DynamicFont" id=3]
-size = 53
+[sub_resource type="DynamicFont" id=7]
+size = 42
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 5 )
 
 [node name="StateMachine" type="Node"]
 script = ExtResource( 1 )
@@ -132,30 +141,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.972549, 0.827451, 0.686275, 1 )
 
-[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Control"]
+[node name="VSplitContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 200.0
 margin_bottom = -319.0
 
-[node name="Logo" type="TextureRect" parent="CanvasLayer/Control/VSplitContainer"]
+[node name="Lives" type="Label" parent="CanvasLayer/Control/VSplitContainer"]
 margin_right = 576.0
-margin_bottom = 427.0
+margin_bottom = 53.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Lives: 3"
+align = 1
+valign = 1
+
+[node name="CurrentScore" type="Label" parent="CanvasLayer/Control/VSplitContainer"]
+margin_top = 57.0
+margin_right = 576.0
+margin_bottom = 107.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Current Score: 0"
+align = 1
+autowrap = true
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer/Control/VSplitContainer"]
+margin_top = 111.0
+margin_right = 576.0
+margin_bottom = 422.0
 rect_pivot_offset = Vector2( 288, 213 )
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VSplitContainer"]
-margin_top = 439.0
+[node name="Instructions" type="Label" parent="CanvasLayer/Control/VSplitContainer"]
+margin_top = 426.0
 margin_right = 576.0
 margin_bottom = 505.0
-grow_horizontal = 2
-size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "Current Score: 0"
+custom_fonts/font = SubResource( 8 )
+text = "Fix it Felines!
+Do the following or die!"
 align = 1
 autowrap = true
 

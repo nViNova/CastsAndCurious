@@ -1,8 +1,9 @@
 extends Node2D
 
 func _ready():
-    get_node("/root/StateMachine").scenes.shuffle()
+    #get_node("/root/StateMachine").scenes.shuffle()
     get_node("/root/StateMachine").lives = 3
+    get_node("/root/StateMachine").score = 0
     $AnimationPlayer.play("dissolve_in")
 
 func quit():

@@ -416,9 +416,9 @@ grow_horizontal = 2
 
 [node name="Label" type="RichTextLabel" parent="CanvasLayer/Control/Image"]
 margin_left = 20.0
-margin_top = 405.0
+margin_top = 404.0
 margin_right = 230.0
-margin_bottom = 573.0
+margin_bottom = 572.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 bbcode_enabled = true
